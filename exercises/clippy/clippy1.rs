@@ -6,12 +6,13 @@
 // check clippy's suggestions from the output to solve the exercise.
 // Execute `rustlings hint clippy1` for hints :)
 
-// I AM NOT DONE
+// I AM DONE
 
 fn main() {
     let x = 1.2331f64;
     let y = 1.2332f64;
-    if y != x {
+    println!("{}", (y - x).abs());
+    if (y - x).abs() != 0.0 {
         println!("Success!");
     }
 }

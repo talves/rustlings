@@ -4,7 +4,7 @@
 // we expect to get when we call `is_even(5)`.
 // Execute `rustlings hint tests3` for hints :)
 
-// I AM NOT DONE
+// //I AM NOT DONE
 
 pub fn is_even(num: i32) -> bool {
     num % 2 == 0
@@ -16,6 +16,10 @@ mod tests {
 
     #[test]
     fn is_true_when_even() {
-        assert!();
+        assert!(is_even(2));
+        // assert!(is_even(5));
+        assert!(is_even(5) == false);
+        assert!(!is_even(5));
+        assert_ne!(is_even(5), true);
     }
 }

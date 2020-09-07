@@ -1,6 +1,6 @@
 // iterators4.rs
 
-// I AM NOT DONE
+// I AM DONE
 
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
@@ -12,6 +12,25 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    // if num == 0 {
+    //     return 1;
+    // }; // by definition of a factorial
+    // if num < 0 {
+    //     panic!("Factorial of a negative number is invalid")
+    // };
+    // let mut factorial: u64 = num;
+    // let mut factor: u64 = num - 1;
+    // while factor > 0 {
+    //     factorial = factor * factorial;
+    //     factor -= 1;
+    // }
+    // factorial
+
+    // This is the fold implementation of product()
+    // (1..=num).fold(1, |acc, v| acc * v)
+
+    (1..=num).product()
 }
 
 #[cfg(test)]

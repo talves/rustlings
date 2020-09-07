@@ -1,14 +1,15 @@
 // modules1.rs
 // Make me compile! Execute `rustlings hint modules1` for hints :)
 
-// I AM NOT DONE
+// Everything is private in Rust by default
 
 mod sausage_factory {
-    fn make_sausage() {
+    pub fn make_sausage() {
         println!("sausage!");
     }
 }
 
 fn main() {
+    // crate::sausage_factory::make_sausage();
     sausage_factory::make_sausage();
 }

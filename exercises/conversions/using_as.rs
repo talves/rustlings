@@ -2,13 +2,12 @@
 // Please note that the `as` operator is not only used when type casting.
 // It also helps with renaming imports.
 
-// I AM NOT DONE
+// I AM DONE
 // The goal is to make sure that the division does not fail to compile
 fn average(values: &[f64]) -> f64 {
-    let total = values
-        .iter()
-        .fold(0.0, |a, b| a + b);
-    total / values.len()
+    let total = values.iter().fold(0.0, |a, b| a + b);
+    let val_len: f64 = values.len() as f64;
+    total / val_len
 }
 
 fn main() {

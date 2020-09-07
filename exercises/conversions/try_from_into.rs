@@ -2,7 +2,7 @@
 // Basically, this is the same as From. The main difference is that this should return a Result type
 // instead of the target type itself.
 // You can read more about it at https://doc.rust-lang.org/std/convert/trait.TryFrom.html
-use std::convert::{TryInto, TryFrom};
+use std::convert::{TryFrom, TryInto};
 
 #[derive(Debug)]
 struct Color {
@@ -11,7 +11,7 @@ struct Color {
     blue: u8,
 }
 
-// I AM NOT DONE
+// I AM DONE
 
 // Your task is to complete this implementation
 // and return an Ok result of inner type Color.
@@ -26,6 +26,10 @@ struct Color {
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = String;
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        match valid_color((tuple.0, tuple.1, tuple.2)) {
+            Ok(color) => Ok(color),
+            Err(e) => Err(Self::Error::from(e)),
+        }
     }
 }
 
@@ -33,6 +37,10 @@ impl TryFrom<(i16, i16, i16)> for Color {
 impl TryFrom<[i16; 3]> for Color {
     type Error = String;
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
+        match valid_color((arr[0], arr[1], arr[2])) {
+            Ok(color) => Ok(color),
+            Err(e) => Err(Self::Error::from(e)),
+        }
     }
 }
 
@@ -40,7 +48,38 @@ impl TryFrom<[i16; 3]> for Color {
 impl TryFrom<&[i16]> for Color {
     type Error = String;
     fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+        if slice.len() != 3 {
+            return Err(Self::Error::from("Length of your slice must be 3"));
+        };
+        match valid_color((slice[0], slice[1], slice[2])) {
+            Ok(color) => Ok(color),
+            Err(e) => Err(Self::Error::from(e)),
+        }
     }
+}
+
+fn valid_color(tuple: (i16, i16, i16)) -> Result<Color, String> {
+    let red: i16 = tuple.0;
+    let green: i16 = tuple.1;
+    let blue: i16 = tuple.2;
+    println!("valid_color.red {} {}", red, red < 0 || red > 255);
+    println!("valid_color.green {} {}", green, green < 0 || green > 255);
+    println!("valid_color.blue {} {}", blue, blue < 0 || blue > 255);
+
+    if red < 0 || red > 255 {
+        return Err(String::from("Red is out of range"));
+    } else if green < 0 || green > 255 {
+        return Err(String::from("Green is out of range"));
+    } else if blue < 0 || blue > 255 {
+        return Err(String::from("Blue is out of range"));
+    }
+    println!("valid_color");
+    let color: Color = Color {
+        red: red as u8,
+        green: green as u8,
+        blue: blue as u8,
+    };
+    Ok(color)
 }
 
 fn main() {

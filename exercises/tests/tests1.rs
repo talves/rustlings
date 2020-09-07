@@ -6,12 +6,16 @@
 // This test has a problem with it -- make the test compile! Make the test
 // pass! Make the test fail! Execute `rustlings hint tests1` for hints :)
 
-// I AM NOT DONE
-
 #[cfg(test)]
 mod tests {
     #[test]
     fn you_can_assert() {
-        assert!();
+        let one = 1;
+        let won = 1;
+        // assert!(&one != 1); // Cannot compare diff literal types
+        // assert!(&1 != 1);
+        assert!(&one == &1);
+        assert!(one == won);
+        assert!(one == 1);
     }
 }

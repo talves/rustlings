@@ -2,12 +2,17 @@
 // Make me compile without changing line 13!
 // Execute `rustlings hint move_semantics2` for hints :)
 
-// I AM NOT DONE
+// I AM DONE
 
 fn main() {
     let vec0 = Vec::new();
 
-    let mut vec1 = fill_vec(vec0);
+    let mut newv: Vec<i32> = Vec::new();
+    for x in &vec0 {
+        newv.push(*x)
+    }
+    println!("{} has length {} content `{:?}`", "newv", newv.len(), newv);
+    let mut vec1 = fill_vec(newv);
 
     // Do not change the following line!
     println!("{} has length {} content `{:?}`", "vec0", vec0.len(), vec0);

@@ -16,25 +16,32 @@
 //
 // Execute `rustlings hint box1` for hints :)
 
-// I AM NOT DONE
+// I AM DONE
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),
     Nil,
 }
 
+use crate::List::{Cons, Nil}; // allows for use of Cons and Nil directly from this crate
+
 fn main() {
     println!("This is an empty cons list: {:?}", create_empty_list());
-    println!("This is a non-empty cons list: {:?}", create_non_empty_list());
+    println!(
+        "This is a non-empty cons list: {:?}",
+        create_non_empty_list()
+    );
 }
 
 pub fn create_empty_list() -> List {
-    unimplemented!()
+    // List::Nil
+    Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    unimplemented!()
+    // List::Cons(1, Box::new(List::Nil))
+    Cons(1, Box::new(Nil))
 }
 
 #[cfg(test)]
